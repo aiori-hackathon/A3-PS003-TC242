@@ -67,11 +67,12 @@ _SKIP_CSS = """
 def render_intro():
     """Render the landing animation. Caller should st.stop() right after."""
     st.markdown(_SKIP_CSS, unsafe_allow_html=True)
-    components.html(
-        INTRO_HTML.replace("__PAYLOAD_KB__", str(_payload_kb())),
-        height=INTRO_HEIGHT,
-        scrolling=False,
-    )
+    html = INTRO_HTML.replace("__PAYLOAD_KB__", str(_payload_kb()))
+    try:
+        components.html(html, height=INTRO_HEIGHT, scrolling=False)
+    except TypeError:
+        # newer Streamlit builds: no `scrolling` kwarg
+        components.html(html, height=INTRO_HEIGHT)
     st.button("Skip intro", icon=":material/skip_next:", key="btn_skip_intro",
               on_click=_finish_intro)
 
