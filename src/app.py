@@ -378,8 +378,8 @@ with st.container(key="ctrlbar"):
     with cc[5]:
         sel_seed = st.selectbox(":material/casino: Random Seed", [42, 7, 123], index=0, key="w_seed")
     with cc[6]:
-        sel_dataset = st.selectbox(":material/dataset: Dataset", ["METR-LA", "UTD-19 (single city)", "PeMS-BAY"],
-                                   index=0, key="w_dataset")
+        sel_dataset = sel_dataset = st.selectbox(":material/dataset: Dataset", ["METR-LA"],
+                                   index=0, key="w_dataset", disabled=True)
     with cc[7]:
         sel_speed = st.selectbox(":material/speed: Training Speed", list(SPEED_MAP.keys()),
                                  index=1, key="w_speed")
@@ -868,17 +868,17 @@ def render_tabs():
 <tr><td>Convergence</td><td style="color:#FFB547">{d['convergence_label']}</td></tr>
 <tr><td>Total comm. (federated)</td><td style="color:#FFB547">{d['total_kb']:.2f} KB</td></tr>
 <tr><td>Per round</td><td>{d['per_rnd']:.2f} KB/round</td></tr></table>
-<div class="note"><b style="color:#00D4FF">Observations</b><br>{obs}<br>
-Communication cost scales linearly with client count.<br>
-No raw data left local devices — privacy preserved ✓</div>
-<div class="note"><b style="color:#00D4FF">Communication Cost Comparison</b><br>
+<div class="note" style="font-size:1.05rem;line-height:1.9"><b style="color:#00D4FF;font-size:1.15rem">Communication Cost Comparison</b><br>
 Federated total (cumulative, {s.rounds_done} rounds, {s.num_clients} clients):
 <b style="color:#00D4FF">{_fmt_bytes(d["fed_total_bytes"])}</b><br>
 Centralized total (one-time raw upload, {SENSORS_DEFAULT} sensors × {TRAIN_FRAC:.0%} train split):
 <b style="color:#FFB547">{_fmt_bytes(d["cen_total_bytes"])}</b><br>
 Model payload per transfer (back-solved from real round data):
 {_fmt_bytes(d["model_bytes"])}<br>
-Reduction vs Centralized: <b style="color:#00FF88">{d["comm_reduction_pct"]:.1f}%</b></div>'''),
+Reduction vs Centralized: <b style="color:#00FF88">{d["comm_reduction_pct"]:.1f}%</b></div>
+<div class="note"><b style="color:#00D4FF">Observations</b><br>{obs}<br>
+Communication cost scales linearly with client count.<br>
+No raw data left local devices — privacy preserved ✓</div>'''),
                             unsafe_allow_html=True)
 
                 # ── Download buttons (only shown when valid results exist) ──
