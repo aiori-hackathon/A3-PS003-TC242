@@ -62,16 +62,6 @@ Summary of the experiment configuration, convergence status, and the federated-v
 
 **How it's detected:** a round is only reported as converged once Federated MAE has stayed essentially flat (round-over-round change under 0.05) for **3 consecutive rounds**. A single lucky small dip is not enough — the metric has to actually stabilise, not just happen to land close together once. If no such stable stretch occurs within the selected rounds, the dashboard reports **"Not Converged"** rather than guessing.
 
-### Verified Results — IID vs Non-IID (3 clients, 20 rounds, all 3 seeds)
-
-| Mode | Seed | Convergence | Avg round-to-round MAE swing |
-|---|---|---|---|
-| IID | 42 | Round 2 | — |
-| IID | 7 | **Not Converged** | — |
-| IID | 123 | Round 14 | — |
-| Non-IID | 42 | Round 4 | — |
-| Non-IID | 7 | **Not Converged** | — |
-| Non-IID | 123 | **Not Converged** | — |
 
 | | Converged | Avg round-to-round MAE swing |
 |---|---|---|
