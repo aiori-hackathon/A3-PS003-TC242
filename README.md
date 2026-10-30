@@ -86,8 +86,6 @@ Both federated and centralised costs are measured in real float32 bytes with the
 | Federated total (cumulative, 20 rounds) | 5.04 MB |
 | Centralised total (one-time) | 5.49 MB |
 | **Reduction vs centralised** | **+8.3%** |
-| Break-even round (3 clients) | ~round 22 |
-| Break-even round (4 clients) | ~round 16 |
 
 **Honest takeaway:** federated learning's bandwidth advantage here is real but modest at these client counts and round counts — not the "orders of magnitude" difference a naive full-dataset comparison would suggest. Past the break-even round, federated's repeated weight exchanges would actually cost *more* cumulatively than centralising the training data once. This is a more interesting and defensible result for a communication-cost study than a flat "FL always wins" claim, and it's the kind of round-count-vs-bandwidth tradeoff PS-003 explicitly asks you to analyse.
 
