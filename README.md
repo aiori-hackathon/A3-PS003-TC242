@@ -190,8 +190,7 @@ TechKnights/
 
 ```bash
 # 1. Clone
-git clone git@github.com:aiori-hackathon/A3-PS003-TC242.git
-cd A3-PS003-TC242
+git clone https://github.com/aiori-hackathon/A3-PS003-TC242.git
 
 # 2. Install dependencies
 pip install -r requirements.txt
